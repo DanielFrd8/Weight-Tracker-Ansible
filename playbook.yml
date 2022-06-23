@@ -57,7 +57,7 @@
       replace:
         path: "{{env_file_path}}"
         regexp: '"HOST_URL"'
-        replace: "http://{{ ansible_eth0.ipv4.address }}:{{ PORT }}"
+        replace: "http://{{ LB_IP }}:{{ PORT }}"
 
     - name: Replaces the PGHOST in .env file
       replace:
