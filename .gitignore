@@ -28,5 +28,6 @@
 
 # Ignore code-workspaces
 *.code-workspace
+vars.yml
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,ansible
