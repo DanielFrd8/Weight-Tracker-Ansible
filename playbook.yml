@@ -108,7 +108,7 @@
         path: "{{ app_path }}"
     - name: Init DB
       command:
-        cmd: npm run dev
+        cmd: npm run initdb
         chdir: "{{ app_path }}"
     - name: pm2 install
       npm:
