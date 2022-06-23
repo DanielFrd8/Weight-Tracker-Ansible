@@ -121,9 +121,11 @@
     - name: setup pm2 startup script
       command:
         cmd: sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u daniel --hp /home/daniel
-    - name: start the application
-      command:
-        cmd: pm2 start "{{app_path}}/src/index.js"
-    - name:
+    - name: run app
+      command: "pm2 start 'npm run dev'"
+      args:
+        chdir: /home/daniel/Weight-Tracker/
+    - name: pm2 save
       command:
         cmd: pm2 save
+
