@@ -6,7 +6,7 @@
     app_path: ./Weight-Tracker/
 
   vars_files:
-    - ./inventories/staging/group_vars/vars.yml
+    - ./vars.yml
 
   environment:
     NVM_DIR: /var/local/nvm
