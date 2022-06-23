@@ -45,71 +45,71 @@
 
     - name: Replaces the PORT in .env file
       replace:
-        path: '{{ env_file_path }}'
+        path: "{{ env_file_path }}"
         regexp: '"PORT"'
-        replace: '{{ PORT }}'
+        replace: "{{ PORT }}"
     - name: Replaces the HOST in .env file
       replace:
-        path: '{{ env_file_path }}'
+        path: "{{ env_file_path }}"
         regexp: '"HOST"'
-        replace: '{{ ansible_default_ipv4.address }}'
+        replace: "{{ ansible_default_ipv4.address }}"
     - name: Replaces the HOST_URL in .env file
       replace:
-        path: '{{env_file_path}}'
+        path: "{{env_file_path}}"
         regexp: '"HOST_URL"'
-        replace: 'http://{{ ansible_eth0.ipv4.address }}:{{ PORT }}'
+        replace: "http://{{ ansible_eth0.ipv4.address }}:{{ PORT }}"
 
     - name: Replaces the PGHOST in .env file
       replace:
-        path: '{{ env_file_path }}'
+        path: "{{ env_file_path }}"
         regexp: '"PGHOST"'
-        replace: '{{ PGHOST }}'
+        replace: "{{ PGHOST }}"
     - name: Replaces the PGUSERNAME in .env file
       replace:
-        path: '{{ env_file_path }}'
+        path: "{{ env_file_path }}"
         regexp: '"PGUSERNAME"'
-        replace: '{{ PGUSERNAME }}'
+        replace: "{{ PGUSERNAME }}"
     - name: Replaces the PGDATABASE in .env file
       replace:
-        path: '{{ env_file_path }}'
+        path: "{{ env_file_path }}"
         regexp: '"PGDATABASE"'
-        replace: '{{ PGDATABASE }}'
+        replace: "{{ PGDATABASE }}"
     - name: Replaces the PGPASSWORD in .env file
       replace:
-        path: '{{ env_file_path }}'
+        path: "{{ env_file_path }}"
         regexp: '"PGPASSWORD"'
         replace: "{{ PGPASSWORD }}"
 
     - name: Replaces the COOKIE_ENCRYPT_PWD in .env file
       replace:
-        path: '{{ env_file_path }}'
+        path: "{{ env_file_path }}"
         regexp: '"COOKIE_ENCRYPT_PWD"'
-        replace: '{{ COOKIE_ENCRYPT_PWD }}'
+        replace: "{{ COOKIE_ENCRYPT_PWD }}"
 
     - name: Replaces the OKTA_ORG_URL in .env file
       replace:
-        path: '{{ env_file_path }}'
+        path: "{{ env_file_path }}"
         regexp: '"OKTA_ORG_URL"'
-        replace: '{{ OKTA_ORG_URL }}'
+        replace: "{{ OKTA_ORG_URL }}"
     - name: Replaces the OKTA_CLIENT_ID in .env file
       replace:
-        path: '{{ env_file_path }}'
+        path: "{{ env_file_path }}"
         regexp: '"OKTA_CLIENT_ID"'
-        replace: '{{ OKTA_CLIENT_ID }}'
+        replace: "{{ OKTA_CLIENT_ID }}"
     - name: Replaces the OKTA_CLIENT_SECRET in .env file
       replace:
-        path: '{{ env_file_path }}'
+        path: "{{ env_file_path }}"
         regexp: '"OKTA_CLIENT_SECRET"'
-        replace: '{{ OKTA_CLIENT_SECRET }}'
+        replace: "{{ OKTA_CLIENT_SECRET }}"
 
     - name: Install npm dependencies from package.json
       npm:
         ci: true
-        path: '{{ app_path }}'
+        path: "{{ app_path }}"
     - name: Init DB
       command:
         cmd: npm run dev
-        chdir: '{{ app_path }}'
+        chdir: "{{ app_path }}"
     - name: pm2 install
       npm:
         name: pm2
@@ -119,11 +119,11 @@
       command:
         cmd: pm2 startup
     - name: setup pm2 startup script
-      command: 
+      command:
         cmd: sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u daniel --hp /home/daniel
     - name: start the application
-      command: 
+      command:
         cmd: pm2 start "{{app_path}}/src/index.js"
-    - name: 
-      command: 
+    - name:
+      command:
         cmd: pm2 save
