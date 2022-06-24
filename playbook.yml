@@ -110,6 +110,7 @@
       command:
         cmd: npm run initdb
         chdir: "{{ app_path }}"
+      run_once: true
     - name: pm2 install
       npm:
         name: pm2
