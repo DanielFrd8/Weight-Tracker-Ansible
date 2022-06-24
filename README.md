@@ -3,10 +3,11 @@
 
 The playbook:
 1. install nodejs and npm.
-2. updates the .env file of Weight-Tracker application.
-3. install the project npm dependencies.
-4. install pm2 and uses it to run the application.
-5. 
+2. clones the Weight-Tracker application from github.
+3. updates the .env file of Weight-Tracker application.
+4. install the project npm dependencies.
+5. install pm2 and uses it to run the application.
+6. 
 
 To use the playbook, you should create a file vars.yml in the same folder of the playbook.
 
