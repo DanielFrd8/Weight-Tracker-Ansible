@@ -11,6 +11,7 @@ The playbook:
 To use the playbook, you should create a file vars.yml in the same folder of the playbook.
 
 The file should have:
+```
 ---
   PORT: 
   LB_IP: 
@@ -22,7 +23,7 @@ The file should have:
   OKTA_ORG_URL: 
   OKTA_CLIENT_ID: 
   OKTA_CLIENT_SECRET: 
-  
+```
   
   
 You should fill the variables.
