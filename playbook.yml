@@ -1,5 +1,5 @@
 ---
-- hosts: appservers-prod
+- hosts: all
   become: yes
   vars:
     env_file_path: ./Weight-Tracker/.env
@@ -125,7 +125,7 @@
     - name: run app
       command: "pm2 start 'npm run dev'"
       args:
-        chdir: /home/daniel/Weight-Tracker/
+        chdir: "{{ app_path }}"
     - name: pm2 save
       command:
         cmd: pm2 save
